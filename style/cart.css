@@ -4,6 +4,7 @@
 }
 #home
 {
+    cursor: pointer;
     margin-left: 12%;
     background-color: black;
     color: white;
