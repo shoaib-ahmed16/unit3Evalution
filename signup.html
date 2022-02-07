@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./style/checkout.css">
+
+</head>
+<body>
+    <div id="order-form">
+        <form id="form">
+          <label>User Email</label><br>
+          <input id="name" type="email" placeholder="User email"><br><br>
+          <label>Number</label><br>
+          <input id="number" type="text" placeholder="Number"><br><br>
+          <label>Password</label><br>
+          <input id="address" type="text" placeholder="Password"><br><br>
+          <label>Re-Password</label><br>
+          <input id="address1" type="text" placeholder="Re-Password"><br><br>
+          <input id="submit" type="submit" value="Placed Order"/>
+        </form>
+        <!--In form, give #name,#number and #address as HTML id's to relevant input elements -->
+      </div>
+</body>
+</html>
+<script>
+
+let arr =JSON.parse(localStorage.getItem("signindetail"))||[]
+    document.getElementById("submit").addEventListener("click",(event)=>{
+    event.preventDefault()
+    
+    let id =form.name.value
+    let num=form.number.value;
+    let pass =form.address.value;
+    let pass2 =form.address1.value;
+    if(id.includes("@"))
+    {
+        if(num.length ==10)
+        {
+            if(pass==pass2)
+            {
+                let obj ={
+                    user:form.name.value,
+                    number:form.number.value,
+                    address:form.address.value
+                }
+                arr.push(obj)
+                localStorage.setItem("signindetail",JSON.stringify(arr))
+                alert("Sign In Is successful")
+                setTimeout(()=>{window.location.href="/login.html"},2000)
+            }
+            else
+            {
+                alert("Incorrect Re-Enter Password")
+            }
+        }
+        else
+        {
+            alert("Invalid Number")
+        }
+    }
+    else 
+    {
+        alert("Invalid Email Id")
+    }
+    })
+
+
+
+    
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./style/checkout.css">
+
+</head>
+<body>
+    <div id="order-form">
+        <form id="form">
+          <label>User Email</label><br>
+          <input id="name" type="email" placeholder="User email"><br><br>
+          <label>Password</label><br>
+          <input id="address" type="text" placeholder="Password"><br><br>
+          <input id="submit" type="submit" value="Placed Order"/>
+        </form>
+        <!--In form, give #name,#number and #address as HTML id's to relevant input elements -->
+      </div>
+</body>
+</html>
+<script>
+
+let arr =JSON.parse(localStorage.getItem("signindetail"))||[]
+    document.getElementById("submit").addEventListener("click",(event)=>{
+    event.preventDefault()
+    console.log(arr)
+    let id =form.name.value
+    let pass =form.address.value;
+    for(let i=0;i<arr.length;i++)
+    {
+        if(arr[i].user==id)
+        {
+            for(let j=0;i<arr.length;j++)
+            {
+                if(arr[j].address==pass)
+                {
+                    alert("LogIn Is successful")
+                    setTimeout(()=>{window.location.href="/index.html"},1000)
+                    break;
+                }
+                if(j==arr.length && arr.address!=pass)
+                {
+                    alert("Incorrect Enter Password")
+                }
+            }
+        }
+        else if(i==arr.length && arr.user!=id)
+        {
+            alert("Invalid Email Id")
+        }
+    }
+    })
+
+
+
+    
+</script>
